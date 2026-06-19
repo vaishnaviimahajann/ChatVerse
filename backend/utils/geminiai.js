@@ -18,17 +18,23 @@ const getGeminiaiResponse = async (message) => {
   };
 
   try {
-    const response = await fetch(
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
-      options
-    );
+  const response = await fetch(
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
+  options
+);
     const data = await response.json();
+    console.log(JSON.stringify(data, null, 2));
+
+    if (!data.candidates || !data.candidates[0]) {
+      return "Sorry, I couldn't generate a response. Please try again.";
+    }
+
     const reply = data.candidates[0].content.parts[0].text;
-    console.log(reply);
-    return reply; // ✅ sirf return karo
+    return reply;
+
   } catch (err) {
     console.error(err);
-    return null;
+    return "Something went wrong while generating response.";
   }
 };
 
