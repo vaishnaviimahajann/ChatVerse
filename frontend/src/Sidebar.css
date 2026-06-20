@@ -45,7 +45,7 @@ button span{
 .history li{
     list-style-type: none;
     cursor: pointer;
-    padding: 2 px 5px;
+    padding: 2px 5px;
     margin-bottom: 0.3rem;
     font-size: 14px;
     border: solid 10px transparent;
