@@ -36,7 +36,7 @@ function Chatwindow(){
 useEffect(()=>{
    if(prompt &&  reply){
         setPrevChats(prevChats =>{
-         [...prevChats,{
+         return [...prevChats,{
             role: "user",
             content : prompt
          },{
