@@ -54,7 +54,7 @@ router.delete("/threads/:threadId", async (req, res) => {
 });
 
 // send message
-router.post("/chat", async (req, res) => {
+router.post("/", async (req, res) => {
     const { threadId, message } = req.body;
 
     if (!threadId || !message) {
