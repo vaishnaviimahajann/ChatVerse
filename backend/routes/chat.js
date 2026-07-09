@@ -1,6 +1,7 @@
 import express from "express";
 import Thread from "../models/Thread.js";
 import getGeminiaiResponse from "../utils/geminiai.js";
+import { isValidMessage } from "../utils/validators.js";
 
 const router = express.Router();
 
@@ -57,10 +58,9 @@ router.delete("/threads/:threadId", async (req, res) => {
 router.post("/", async (req, res) => {
     const { threadId, message } = req.body;
 
-    if (!threadId || !message) {
+    if (!isValidMessage(threadId, message)) {
         return res.status(400).json({ error: "threadId and message are required" });
     }
-
     try {
         let thread = await Thread.findOne({ threadId });
 
