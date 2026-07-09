@@ -23,7 +23,6 @@ const getGeminiaiResponse = async (message) => {
   options
 );
     const data = await response.json();
-    console.log(JSON.stringify(data, null, 2));
 
     if (!data.candidates || !data.candidates[0]) {
       return "Sorry, I couldn't generate a response. Please try again.";
