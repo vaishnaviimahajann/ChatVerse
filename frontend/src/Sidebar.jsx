@@ -8,7 +8,7 @@ function Sidebar(){
 
   const getAllThreads = async () => {
     try {
-        const response = await fetch("http://localhost:8080/api/chat/threads");
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/threads`);
         const res = await response.json();
         const filterdData = res.map(thread => ({ threadId: thread.threadId, title: thread.title }));
         console.log(filterdData);
@@ -33,7 +33,7 @@ function Sidebar(){
   const changeThread = async (newThreadId) => {
     setcurrThreadId(newThreadId);
     try {
-      const response = await fetch(`http://localhost:8080/api/chat/threads/${newThreadId}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/threads/${newThreadId}`);
       const res = await response.json();
       console.log(res);
       setPrevChats(res);
@@ -47,7 +47,7 @@ function Sidebar(){
 
   const deleteThread = async (threadId)=>{
        try{
-           const response = await fetch(`http://localhost:8080/api/chat/threads/${threadId}`, {method: "DELETE"});
+           const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat/threads/${threadId}`, {method: "DELETE"});
             
            const res = await response.json();
            console.log(res);
@@ -99,4 +99,4 @@ function Sidebar(){
     </section>
   )
 }
-export default Sidebar; 
+export default Sidebar;
