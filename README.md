@@ -129,7 +129,6 @@ This project is deployed on **Render**:
 
 ---
 
-## Author
 
 **Vaishnavi Mahajan**
 
